@@ -53,15 +53,6 @@ public class MpaUsrHomeController {
 		int[] arr = new int[] {1,2,3};
 		return arr;
 	}
-	
-	@RequestMapping("mpaUsr/home/main8")
-	@ResponseBody
-	public List<Integer> showmain8() {
-		List<Integer> l = new ArrayList<>();
-		l.add(10);
-		l.add(20);
-		l.add(30);
-		return l;
-	}
+
 	
 }
