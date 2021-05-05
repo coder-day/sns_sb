@@ -1,11 +1,17 @@
 package com.sbs.untact.controller;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sbs.untact.util.Util;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @Controller
 public class MpaUsrArticleController {
@@ -13,7 +19,8 @@ public class MpaUsrArticleController {
 
 	@RequestMapping("/mpaUsr/article/doWrite")
 	@ResponseBody
-	public Article doWrite(String title, String body) {
+//	public Map<String, Object> doWrite(String title, String body) {
+	public ResultData doWrite(String title, String body) {
 		int id = articleLastId + 1;
 		String regDate = Util.getNowDateStr();
 		String updateDate = Util.getNowDateStr();
@@ -22,9 +29,24 @@ public class MpaUsrArticleController {
 
 		articleLastId = id;
 
-		return article;
+//		Map<String, Object> rsData = new HashMap<>();
+//		rsData.put("resultCode", "S-1");
+//		rsData.put("msg", id + "번 글이 작성 되었습니다.");
+//		rsData.put("article", article);
+//		return rsData;
+		
+		return new ResultData("S-1", id + "번 글이 작성 되었습니다.", article);
 	}
 }
+
+@AllArgsConstructor
+@Data
+class ResultData {
+	private String resultData;
+	private String msg;
+	private Article article;
+}
+
 
 class Article {
 	private int id;
