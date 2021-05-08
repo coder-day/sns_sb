@@ -35,6 +35,16 @@ public class MpaUsrArticleController {
 	@RequestMapping("/mpaUsr/article/doWrite")
 	@ResponseBody
 	public ResultData doWrite(String title, String body) {
+		
+		// 입력 값 체크 
+		if ( Util.isEmpty(title)) {
+			return new ResultData("F-1", "제목을 입력해 주세요.");
+		}
+		
+		if ( Util.isEmpty(body)) {
+			return new ResultData("F-2", "내용을 입력해 주세요.");
+		}
+		
 		int id = writeArticle(title, body);
 
 		Article article = getArticleById(id);
@@ -45,7 +55,21 @@ public class MpaUsrArticleController {
 	// 게시물 수정
 	@RequestMapping("/mpaUsr/article/doModify")
 	@ResponseBody
-	public ResultData doModify(int id, String title, String body) {
+	public ResultData doModify(Integer id, String title, String body) {
+		// 입력 값 체크 
+		
+		if ( Util.isEmpty(id)) {
+			return new ResultData("F-1", "ID을 번호를 입력해 주세요.");
+		}
+		
+		if ( Util.isEmpty(title)) {
+			return new ResultData("F-2", "제목을 입력해 주세요.");
+		}
+		
+		if ( Util.isEmpty(body)) {
+			return new ResultData("F-3", "내용을 입력해 주세요.");
+		}
+		
 		boolean modified = modifyArticle(id,title, body);
 		if ( modified  == false ) {
 			return new ResultData("F-1", id + "번 글이 없습니다.", "id", id);
@@ -56,7 +80,13 @@ public class MpaUsrArticleController {
 	// 게시물 삭제
 	@RequestMapping("/mpaUsr/article/doDelete")
 	@ResponseBody
-	public ResultData doDelete(int id) {
+	public ResultData doDelete(Integer id) {
+		// 입력 값 체크 
+		
+		if ( Util.isEmpty(id)) {
+			return new ResultData("F-1", "ID을 번호를 입력해 주세요.");
+		}
+				
 		boolean deleted = deleteArticleById(id);
 
 		if ( deleted  == false ) {
@@ -73,6 +103,11 @@ public class MpaUsrArticleController {
 	@RequestMapping("/mpaUsr/article/getArticle")
 	@ResponseBody
 	public ResultData getArticle(int id) {
+		// 입력 값 체크 
+		
+		if ( Util.isEmpty(id)) {
+			return new ResultData("F-1", "ID을 번호를 입력해 주세요.");
+		}
 		
 		Article article = getArticleById(id);
 		
