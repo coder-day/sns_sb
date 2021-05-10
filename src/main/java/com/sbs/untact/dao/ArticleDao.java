@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.sbs.untact.dto.Article;
-import com.sbs.untact.dto.ResultData;
 import com.sbs.untact.util.Util;
 
 @Component
