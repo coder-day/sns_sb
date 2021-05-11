@@ -13,20 +13,7 @@ import com.sbs.untact.dto.ResultData;
 
 @Service
 public class ArticleService {
-	private List<Article> articles;
-	private int articleLastId;
 
-	public ArticleService() {
-		articles = new ArrayList<>();
-		articleLastId = 0;
-		makeTestData();
-	}
-
-	public void makeTestData() {
-		for (int i = 0; i < 3; i++) {
-			writeArticle("제목1", "내용1");
-		}
-	}
 	@Autowired
 	private ArticleDao articleDao;
 
@@ -56,7 +43,10 @@ public class ArticleService {
 	}
 
 	public ResultData writeArticle(String title, String body) {
-		int id = articleDao.writeArticle(title, body);
+		int boardId = 3; // 가짜 데이터
+		int memberId = 3; // 가짜 데이터
+		articleDao.writeArticle(boardId, memberId, title, body);
+		int id = 1; // 가짜 데이터
 
 		return new ResultData("S-1", "게시물이 작성되었습니다.", "id", id);
 	}
