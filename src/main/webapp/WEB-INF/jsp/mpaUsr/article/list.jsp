@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
 <!-- 모바일에서 사이트가 PC에서의 픽셀크기 기준으로 작동하게 하기(반응형 하려면 필요) -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -25,13 +26,13 @@
 
 <link rel="stylesheet" href="/resource/common.css" />
 <script src="/resource/common.js" defer></script>
-<title>insta</title>
+<title>INSTA</title>
 </head>
 <body>
 	<div class="site-wrap">
 		<header class="top-bar top-bar--fly">
 			<div class="container mx-auto flex h-full">
-				<a href="#" class="px-3 flex items-center">
+				<a href="/" class="px-3 flex items-center">
 					<span>
 						<i class="fas fa-lemon"></i>
 					</span>
@@ -59,7 +60,7 @@
 							</a>
 							<div>
 								<h1>
-									<a href="../article/list?boardId=1">
+									<a href="#">
 										<span>
 											<i class="far fa-newspaper"></i>
 										</span>
@@ -68,7 +69,7 @@
 								</h1>
 								<ul>
 									<li>
-										<a href="../article/list?board=2">
+										<a href="../article/list?boardId=1">
 											<span>
 												<i class="far fa-clipboard"></i>
 											</span>
@@ -76,7 +77,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="../article/list?boardId=2">
 											<span>
 												<i class="far fa-clipboard"></i>
 											</span>
@@ -100,6 +101,13 @@
 			</div>
 
 		</header>
+
+		<div class="title-bar">
+			<div class="mx-auto container">
+				<span><i class="far fa-clipboard"></i></span>
+				<span>ARTICLE LIST</span>
+			</div>
+		</div>
 	</div>
 </body>
-</html>
+</html> 

@@ -87,4 +87,12 @@ public class MpaUsrArticleController {
 		}
 		return new ResultData("S-1", article.getId() + "번 글 입니다.", "article", article);
 	}
+	
+	@RequestMapping("/mpaUsr/article/list")
+	@ResponseBody
+	public String showList(int boardId) {
+		
+		return "mpaUsr/article/list";
+	
+	}
 }
