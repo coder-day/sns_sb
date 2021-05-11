@@ -40,5 +40,12 @@
 		delDate = NOW()
 		WHERE id = #{id}
 	</update>
+	
+	<select id="getBoardById" resultType="Board">
+		SELECT *
+		FROM Board AS B
+		WHERE B.id = #{id}
+		AND B.delStatus = 0
+	</select>
 
 </mapper>
