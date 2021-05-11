@@ -92,7 +92,7 @@ public class MpaUsrArticleController {
 	@ResponseBody
 	public String showList(int boardId) {
 		
-		return "mpaUsr/article/list";
+		return "/mpaUsr/article/list";
 	
 	}
 }
