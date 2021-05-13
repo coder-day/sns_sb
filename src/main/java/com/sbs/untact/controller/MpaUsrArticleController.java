@@ -60,12 +60,16 @@ public class MpaUsrArticleController {
 		Board board = articleService.getBoardById(boardId);
 
 		if (board == null) {
-			req.setAttribute("msg", boardId + "번 게시판이 존재 하지 않습니다.");
-			return "common/redirect";
+
+			return msgAndBack(req, boardId + "번 게시판이 존재 하지 않습니다.");
 		}
 
 		req.setAttribute("board", board);
 		return "mpaUsr/article/list";
+	}
+	private String msgAndBack(HttpServletRequest req, String msg) {
+		req.setAttribute("msg", msg);
+		return "common/redirect";
 	}
 	@RequestMapping("/mpaUsr/article/getArticle")
 	@ResponseBody
