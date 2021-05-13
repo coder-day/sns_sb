@@ -49,12 +49,21 @@ public class MpaUsrArticleController {
 	}
 	@RequestMapping("/mpaUsr/article/doDelete")
 	@ResponseBody
-	public ResultData doDelete(Integer id) {
+	public String doDelete(HttpServletRequest req, Integer id) {
 		if (Util.isEmpty(id)) {
-			return new ResultData("F-1", "번호를 입력해주세요.");
+			return msgAndBack(req, "id를 입력해주세요.");
 		}
-		return articleService.deleteArticleById(id);
+		ResultData rd = articleService.deleteArticleById(id);
+
+		if ( rd.isFail() ) {
+			return msgAndBack(req, rd.getMsg());
+		}
+
+		String redirectUrl = "../article/list?boardId=" + rd.getBody().get("boardId");
+
+		return msgAndReplace(req, rd.getMsg(), redirectUrl);
 	}
+	
 	@RequestMapping("/mpaUsr/article/list")
 	public String showList(HttpServletRequest req, int boardId) {
 		Board board = articleService.getBoardById(boardId);
@@ -67,10 +76,19 @@ public class MpaUsrArticleController {
 		req.setAttribute("board", board);
 		return "mpaUsr/article/list";
 	}
+	
 	private String msgAndBack(HttpServletRequest req, String msg) {
 		req.setAttribute("msg", msg);
+		req.setAttribute("historyBack", true);
 		return "common/redirect";
 	}
+
+	private String msgAndReplace(HttpServletRequest req, String msg, String replaceUrl) {
+		req.setAttribute("msg", msg);
+		req.setAttribute("replaceUrl", replaceUrl);
+		return "common/redirect";
+	}
+	
 	@RequestMapping("/mpaUsr/article/getArticle")
 	@ResponseBody
 	public ResultData getArticle(Integer id) {
