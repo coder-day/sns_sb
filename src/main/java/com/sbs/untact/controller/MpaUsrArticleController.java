@@ -47,6 +47,8 @@ public class MpaUsrArticleController {
 		}
 		return articleService.modifyArticle(id, title, body);
 	}
+	
+	
 	@RequestMapping("/mpaUsr/article/doDelete")
 	@ResponseBody
 	public String doDelete(HttpServletRequest req, Integer id) {
@@ -74,6 +76,10 @@ public class MpaUsrArticleController {
 		}
 
 		req.setAttribute("board", board);
+		
+		int totalItemsCount = articleService.getArticlesTotalCount(boardId);
+		req.setAttribute("totalItemsCount", totalItemsCount);
+		
 		return "mpaUsr/article/list";
 	}
 	
