@@ -2,11 +2,13 @@ package com.sbs.untact.dto;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-public @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
-class Article {
+public class Article {
 	private int id;
 	private String regDate;
 	private String updateDate;
